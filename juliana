@@ -1,3 +1,6 @@
+juliana-heir.zip
+│
+├─ index.html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,7 +21,6 @@
       <a href="#contact">Contacto</a>
     </nav>
   </header>
-
   <main>
     <section id="home">
       <h2>Bienvenida</h2>
@@ -61,6 +63,9 @@
   <script src="js/app.js"></script>
 </body>
 </html>
+
+├─ css/
+│   └─ styles.css
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: Arial, sans-serif;
@@ -114,6 +119,9 @@ h2 { margin-bottom: 15px; color: #6e5494; }
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 #resultadoQuiz { margin-top: 20px; }
+
+├─ js/
+│   └─ app.js
 const econRutinas = [
   { title: "Skala Hidratación", desc: "Shampoo + máscara para cabello seco.", price: "$5 000", img: "https://via.placeholder.com/300?text=Skala" },
   { title: "Novella Nutritiva", desc: "Shampoo nutritivo + crema sin enjuague.", price: "$6 500", img: "https://via.placeholder.com/300?text=Novella" }
@@ -139,8 +147,7 @@ function mostrarRutinas(list, containerId) {
       <img src="${item.img}" alt="${item.title}" />
       <div class="card-title">${item.title}</div>
       <div class="card-desc">${item.desc}</div>
-      <div class="card-price">${item.price}</div>
-    `;
+      <div class="card-price">${item.price}</div>`;
     cont.appendChild(card);
   });
 }
@@ -155,20 +162,12 @@ document.getElementById("hairQuiz").addEventListener("submit", e => {
   const tipo = e.target.tipo.value;
   const t = tratamientos[tipo];
   document.getElementById("resultadoQuiz").innerHTML = `
-
+    <h3>Tratamiento tipo ${tipo}:</h3>
     <p><strong>Económico:</strong> ${t.econ.title} – ${t.econ.price}<br>${t.econ.desc}</p>
     <p><strong>Premium:</strong> ${t.care.title} – ${t.care.price}<br>${t.care.desc}</p>
-    <p>Contactame al <strong>+54 9 1234‑5678</strong> para pedirlo 😊</p>
-  `;
+    <p>Contactame al <strong>+54 9 1234‑5678</strong> para pedirlo 😊</p>`;
 });
-mkdir juliana-heir
-cd juliana-heir
-mkdir css js img
-# Copiá dentro los archivos que te di; tu logo en img/logo.png.
-git init
-git add .
-git commit -m "App Juliana Heir versión inicial"
-git branch -M main
-git remote add origin https://github.com/TU_USUARIO/juliana-heir.git
-git push -u origin main
+
+└─ img/
+    └─ logo.png
 
