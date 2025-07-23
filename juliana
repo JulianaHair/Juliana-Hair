@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juliana Heir - Rutinas de Belleza</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Juliana Heir" class="logo" />
+    <h1>Juliana Heir</h1>
+    <nav>
+      <a href="#home">Inicio</a>
+      <a href="#ru‑econ">Económicas</a>
+      <a href="#ru‑care">Premium</a>
+      <a href="#quiz">Test Cabello</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h2>Bienvenida</h2>
+      <p>Descubrí nuestras rutinas según tu tipo de cabello y presupuesto.</p>
+    </section>
+
+    <section id="ru‑econ">
+      <h2>Rutinas Económicas</h2>
+      <div class="cards" id="econ-list"></div>
+    </section>
+
+    <section id="ru‑care">
+      <h2>Rutinas Premium</h2>
+      <div class="cards" id="care-list"></div>
+    </section>
+
+    <section id="quiz">
+      <h2>Identifica tu tipo de cabello</h2>
+      <form id="hairQuiz">
+        <label>¿Tu cabello es?
+          <select name="tipo">
+            <option value="1">Liso</option>
+            <option value="2">Ondulado</option>
+            <option value="3">Rizado</option>
+            <option value="4">Muy rizado</option>
+          </select>
+        </label>
+        <button type="submit">Ver mi rutina</button>
+      </form>
+      <div id="resultadoQuiz"></div>
+    </section>
+
+    <section id="contact">
+      <h2>Contacto</h2>
+      <p>Email: <a href="mailto:juliana@heir.com">juliana@heir.com</a></p>
+      <p>📲 WhatsApp: <strong>+54 9 1234‑5678</strong></p>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f2ef;
+  color: #333;
+  line-height: 1.5;
+}
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 20px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.logo { height: 50px; }
+nav a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #555;
+  font-weight: bold;
+}
+nav a:hover { color: #a678e0; }
+main { padding: 20px; }
+section { margin-bottom: 40px; }
+h2 { margin-bottom: 15px; color: #6e5494; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+  gap: 20px;
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-3px); }
+.card img {
+  width: 100%;
+  border-radius: 4px;
+}
+.card-title { font-size: 1.2rem; margin: 10px 0; }
+.card-desc { font-size: 0.95rem; margin-bottom: 8px; }
+.card-price { font-weight: bold; color: #a678e0; }
+
+#quiz {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+#resultadoQuiz { margin-top: 20px; }
+const econRutinas = [
+  { title: "Skala Hidratación", desc: "Shampoo + máscara para cabello seco.", price: "$5 000", img: "https://via.placeholder.com/300?text=Skala" },
+  { title: "Novella Nutritiva", desc: "Shampoo nutritivo + crema sin enjuague.", price: "$6 500", img: "https://via.placeholder.com/300?text=Novella" }
+];
+const careRutinas = [
+  { title: "Fidalité Rejuvenecedora", desc: "Tratamiento completo antiedad.", price: "$18 000", img: "https://via.placeholder.com/300?text=Fidalite" },
+  { title: "Alta Gama Premium", desc: "Salón profesional + productos top.", price: "$30 000", img: "https://via.placeholder.com/300?text=Premium" }
+];
+
+const tratamientos = {
+  1: { econ: { title: "Skala Suave Brillo", price: "$5 000", desc: "Máscara + serum para cabello liso" }, care: { title: "Fidalité Silk Complex", price: "$18 000", desc: "Tratamiento profesional para brillo" } },
+  2: { econ: { title: "Novella Definición", price: "$6 500", desc: "Shampoo ligero + crema definidora" }, care: { title: "Fidalité Waves Expert", price: "$20 000", desc: "Definición y control profesional" } },
+  3: { econ: { title: "Skala Rizos", price: "$7 000", desc: "Máscara + gel para rizos definidos" }, care: { title: "Fidalité Rizos Pro", price: "$22 000", desc: "Tratamiento top para rizos" } },
+  4: { econ: { title: "Novella Hidro", price: "$8 500", desc: "Shampoo hidratante + máscara" }, care: { title: "Fidalité Curl Supreme", price: "$25 000", desc: "Cuidados intensivos para rizos" } }
+};
+
+function mostrarRutinas(list, containerId) {
+  const cont = document.getElementById(containerId);
+  list.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${item.img}" alt="${item.title}" />
+      <div class="card-title">${item.title}</div>
+      <div class="card-desc">${item.desc}</div>
+      <div class="card-price">${item.price}</div>
+    `;
+    cont.appendChild(card);
+  });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  mostrarRutinas(econRutinas, "econ-list");
+  mostrarRutinas(careRutinas, "care-list");
+});
+
+document.getElementById("hairQuiz").addEventListener("submit", e => {
+  e.preventDefault();
+  const tipo = e.target.tipo.value;
+  const t = tratamientos[tipo];
+  document.getElementById("resultadoQuiz").innerHTML = `
+
+    <p><strong>Económico:</strong> ${t.econ.title} – ${t.econ.price}<br>${t.econ.desc}</p>
+    <p><strong>Premium:</strong> ${t.care.title} – ${t.care.price}<br>${t.care.desc}</p>
+    <p>Contactame al <strong>+54 9 1234‑5678</strong> para pedirlo 😊</p>
+  `;
+});
+mkdir juliana-heir
+cd juliana-heir
+mkdir css js img
+# Copiá dentro los archivos que te di; tu logo en img/logo.png.
+git init
+git add .
+git commit -m "App Juliana Heir versión inicial"
+git branch -M main
+git remote add origin https://github.com/TU_USUARIO/juliana-heir.git
+git push -u origin main
+
