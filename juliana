@@ -132,7 +132,7 @@ const careRutinas = [
 ];
 
 const tratamientos = {
-  1: { econ: { title: "Skala Suave Brillo", price: "$5 000", desc: "Máscara + serum para cabello liso" }, care: { title: "Fidalité Silk Complex", price: "$18 000", desc: "Tratamiento profesional para brillo" } },
+  1:  <img src="${ title: "Skala Suave Brillo", price: "$5 000", desc: "Máscara + serum para cabello liso" }, care: { title: "Fidalité Silk Complex", price: "$18 000", desc: "Tratamiento profesional para brillo" } },
   2: { econ: { title: "Novella Definición", price: "$6 500", desc: "Shampoo ligero + crema definidora" }, care: { title: "Fidalité Waves Expert", price: "$20 000", desc: "Definición y control profesional" } },
   3: { econ: { title: "Skala Rizos", price: "$7 000", desc: "Máscara + gel para rizos definidos" }, care: { title: "Fidalité Rizos Pro", price: "$22 000", desc: "Tratamiento top para rizos" } },
   4: { econ: { title: "Novella Hidro", price: "$8 500", desc: "Shampoo hidratante + máscara" }, care: { title: "Fidalité Curl Supreme", price: "$25 000", desc: "Cuidados intensivos para rizos" } }
@@ -147,8 +147,8 @@ function mostrarRutinas(list, containerId) {
       <img src="${item.img}" alt="${item.title}" />
       <div class="card-title">${item.title}</div>
       <div class="card-desc">${item.desc}</div>
-      <div class="card-price">${item.price}</div>`;
-    cont.appendChild(card);
+      <div class="card-price">${item.price}</div>
+    cont.appendChild(card)
   });
 }
 
@@ -165,7 +165,7 @@ document.getElementById("hairQuiz").addEventListener("submit", e => {
     <h3>Tratamiento tipo ${tipo}:</h3>
     <p><strong>Económico:</strong> ${t.econ.title} – ${t.econ.price}<br>${t.econ.desc}</p>
     <p><strong>Premium:</strong> ${t.care.title} – ${t.care.price}<br>${t.care.desc}</p>
-    <p>Contactame al <strong>+54 9 1234‑5678</strong> para pedirlo 😊</p>`;
+    <p>Contactame al <strong>+54 9 3816‑576163</strong> para pedirlo 😊</p>
 });
 
 └─ img/
